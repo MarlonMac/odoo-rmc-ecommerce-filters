@@ -1,0 +1,210 @@
+/*
+=====================================
+ RMC eCommerce Filters - Inverted Theme
+=====================================
+*/
+
+/* --- Contenedor Principal (Tarjeta) --- */
+.rmc-unified-search-card {
+    background-color: #ffffff; /* Fondo blanco */
+    border: 1px solid #e0e0e0; /* Borde gris muy sutil */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra más suave */
+    color: #212529; /* Color de texto oscuro (negro estándar de Bootstrap) */
+    
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0.7rem;
+    border-bottom-right-radius: 0.7rem;
+    padding: 13px 10px; /* Espaciado interno */
+}
+
+/* --- Separador Horizontal --- */
+.rmc-unified-search-card hr {
+    background-color: #aeaeae;
+    margin-top: 13px; /* Espacio superior para el separador */
+    margin-bottom: 0; /* Espacio inferior para el separador */
+}
+
+.rmc-unified-search-card .btn {
+    border-radius: 0.75rem;
+}
+
+.rmc-unified-search-card .form-control {
+    border-radius: 0.75rem;
+}
+
+/* --- Inputs y Selects Oscuros --- 
+.rmc-unified-search-card .form-control,
+.rmc-unified-search-card .form-select {
+    background-color: #f8f9fa; /* Un gris muy claro para los inputs 
+    color: #212529;
+    border-color: #dee2e6;
+} */
+
+.rmc-unified-search-card .form-control::placeholder {
+    color: #6c757d; /* Color del placeholder */
+}
+
+/* --- Botón de Búsqueda --- */
+.rmc-unified-search-card .oe_search_button {
+    background-color: #aa1f23; /* Botón rojo */
+    border-color: #aa1f2459;
+}
+
+/* --- Botón de Limpiar --- */  
+.rmc-unified-search-card a.btn.btn-secondary  {
+    background-color: #fff; /* Fondo blanco para el botón de limpiar */
+    border: 1px solid #212529; /* Borde oscuro */
+    color: #181818; /* Texto oscuro */
+}
+
+/* --- Botón de Limpiar Hover --- */
+.rmc-unified-search-card a.btn.btn-secondary:hover {
+    background-color: #212529; /* Fondo oscuro en hover */
+    border-color: #212529; /* Borde oscuro en hover */
+    color: #fff; /* Texto blanco en hover */
+}
+
+/* --- Switch de "Ofertas" --- */
+.rmc-unified-search-card .form-check-input:checked {
+    background-color: #212529; /* Switch activado en color oscuro */
+    border-color: #212529;
+}
+
+/* --- Ajuste para eliminar el espacio superior (del paso anterior) --- */
+.o_wsale_products_page > .container.oe_website_sale {
+    margin-top: -16px;
+    padding-top: 0;
+}
+
+/*
+=====================================
+ Animación para Filtros Colapsables
+=====================================
+*/
+
+/* Transición suave para el despliegue */
+#rmcFilterCollapse.collapsing {
+    transition: height 0.3s ease;
+}
+
+/* separamos el estilo para que esté redondeado */
+#rmc_filter_toggle_btn {
+    border-radius: 0.75rem;
+}
+
+/* Estilo para el botón de filtros cuando NO está activo */
+#rmc_filter_toggle_btn {
+    border: 1px solid #212529;
+    background-color: #f8f9fa; /* Añadimos un tono claro para que contraste con los demás botones */
+    color: #212529; /* Texto oscuro para el botón inactivo */
+}
+
+/* Estilo para el botón de filtros cuando está activo */
+#rmc_filter_toggle_btn.active {
+    /* Se añade un borde más grueso y oscuro para coincidir con el estilo nativo. */
+    border: 1px solid #212529;
+    /* Se ajusta el fondo para que siga siendo claro. */
+    background-color: #212529; /* Fondo oscuro para el botón activo */
+    color: #fff; /* Texto claro para el botón activo */
+}
+
+/*
+==========================================================
+ Quitar el anillo de enfoque del botón de filtros
+==========================================================
+*/
+#rmc_filter_toggle_btn:focus {
+    box-shadow: none;
+}
+
+/*
+==========================================================
+ Interruptor de "Ofertas" Personalizado (Inspirado en Codepen codepen.io/raubaca/pen/BjGKde)
+==========================================================
+*/
+.rmc-codepen-switch {
+    /* Contenedor para alinear el interruptor */
+    height: 38px; /* Misma altura que los otros inputs */
+    display: flex;
+    align-items: center;
+}
+
+/* Ocultamos el checkbox real */
+.rmc-codepen-switch input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+
+/* El riel o fondo del interruptor */
+.rmc-codepen-switch .check-trail {
+    display: flex;
+    align-items: center;
+    width: 60px;   /* Ancho del riel */
+    height: 32px;  /* Alto del riel */
+    padding: 4px;
+    background: #e9ecef; /* Color del riel apagado */
+    border-radius: 32px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+/* El círculo manejador */
+.rmc-codepen-switch .check-handler {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;   /* Diámetro del círculo */
+    height: 24px;
+    position: relative;
+    background: white;
+    border-radius: 50%;
+    transition: all 0.4s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Los palitos que forman la 'X' para el estado apagado */
+.rmc-codepen-switch .check-handler::before,
+.rmc-codepen-switch .check-handler::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 12px;
+    background: #adb5bd; /* Color de la 'X' */
+    transition: all 0.4s ease;
+}
+
+.rmc-codepen-switch .check-handler::before {
+    transform: rotate(45deg);
+}
+.rmc-codepen-switch .check-handler::after {
+    transform: rotate(-45deg);
+}
+
+
+/* --- ESTADOS ACTIVADOS --- */
+
+.rmc-codepen-switch input[type="checkbox"]:checked + .check-trail {
+    background: #212529; /* Color del riel encendido (oscuro) */
+}
+
+.rmc-codepen-switch input[type="checkbox"]:checked + .check-trail .check-handler {
+    transform: translateX(28px); /* Movemos el círculo a la derecha */
+    background: white;
+}
+
+/* Los palitos se convierten en un 'check' ✓ */
+.rmc-codepen-switch input[type="checkbox"]:checked + .check-trail .check-handler::before {
+    width: 2px;
+    height: 12px;
+    transform: rotate(45deg) translate(3px, -2px);
+    background: #212529; /* Color del 'check' */
+}
+
+.rmc-codepen-switch input[type="checkbox"]:checked + .check-trail .check-handler::after {
+    width: 2px;
+    height: 6px;
+    transform: rotate(-45deg) translate(-3px, -1px);
+    background: #212529; /* Color del 'check' */
+}

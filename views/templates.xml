@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="rmc_shop_filters_inherit" model="ir.ui.view">
+        <field name="name">RMC eCommerce Filters - Collapsible Filters</field>
+        <field name="inherit_id" ref="website_sale.products"/>
+        <field name="priority">99</field>
+        <field name="website_id" eval="False"/>        
+        <field name="arch" type="xml">
+
+            <xpath expr="//t[@t-call='website_sale.products_breadcrumb']" position="attributes">
+                <attribute name="t-if">0</attribute>
+            </xpath>
+
+            <xpath expr="//div[hasclass('products_header')]" position="replace">
+                <form method="get" t-attf-action="/shop{{ '/category/' + slug(category) if category else '' }}">
+                    <div class="rmc-unified-search-card mb-4">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 p-3">
+                            <div class="o_search_bar_container flex-grow-1">
+                                <div role="search" class="input-group s_searchbar_input me-auto">
+                                    <input type="search" name="search"
+                                        class="search-query form-control oe_search_box"
+                                        placeholder="Buscar productos..."
+                                        t-att-value="search"/>
+                                    <button type="submit" class="btn oe_search_button btn-primary" aria-label="Búsqueda" title="Búsqueda">
+                                        <i class="oi oi-search"/>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="o_wsale_apply_layout">
+                                <div class="btn-group">
+                                    <t t-call="website_sale.pricelist_list" t-cache="pricelist" t-if="request.env.user.has_group('__export__.res_groups_187_321769fa')"/>                                    
+                                    <t t-call="website_sale.sort"/>
+                                    <t t-if="is_view_active('website_sale.add_grid_or_list_option')"
+                                       t-call="website_sale.add_grid_or_list_option">
+                                        <t t-set="_classes" t-valuef="d-flex ms-3"/>
+                                    </t>
+                                    <button class="btn btn-light ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#rmcFilterCollapse" aria-expanded="false" aria-controls="rmcFilterCollapse" id="rmc_filter_toggle_btn">
+                                        <i class="fa fa-filter"/>
+                                        <span class="d-none d-md-inline ms-1">Filtros</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="collapse" id="rmcFilterCollapse">
+                            <hr class="rmc_filter_separator"/>
+                            <div class="rmc_filters_container p-3">
+                                <div class="row w-100 align-items-end gx-3">
+                                    
+                                    <div class="col-lg-3 mb-3 mb-lg-0">
+                                        <label for="category_filter" class="form-label small">Categoría</label>
+                                        <select id="category_filter" name="category" class="form-select form-select-sm btn btn-light text-start">
+                                            <option value="">Todas</option>
+                                            <t t-foreach="categories" t-as="c">
+                                                <option t-att-value="c.id" t-att-selected="category and category.id == c.id">
+                                                    <t t-esc="c.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-lg-3 mb-3 mb-lg-0">
+                                        <label class="form-label small">Subcategoría</label>
+                                        <select class="form-select form-select-sm btn btn-light text-start" disabled="disabled">
+                                            <option>Seleccione subcategoría...</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="col-lg-3 mb-3 mb-lg-0">
+                                        <label class="form-label small">Rango de Precio</label>
+                                        <input type="text" class="form-control form-control-sm btn btn-light" placeholder="Próximamente..." disabled="disabled"/>
+                                    </div>
+
+                                    <div class="col-lg-1 mb-3 mb-lg-0 d-flex flex-column justify-content-end">
+                                        <label for="on_sale_filter" class="form-label small">Ver Ofertas</label>
+                                        <div class="rmc-codepen-switch">
+                                            <input type="checkbox" name="on_sale" id="on_sale_filter" value="true" t-att-checked="is_on_sale_checked"/>
+                                            <label class="check-trail" for="on_sale_filter">
+                                                <span class="check-handler"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-lg-2">
+                                        <a href="/shop" class="btn btn-secondary w-100" role="button">Limpiar Filtros</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <t t-call="website_sale.products_breadcrumb"/>
+            </xpath>
+
+            <xpath expr="//div[hasclass('oe_website_sale') and hasclass('pt-2')]" position="attributes">
+                <attribute name="class">container oe_website_sale</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
