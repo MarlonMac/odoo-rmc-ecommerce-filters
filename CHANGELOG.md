@@ -1,5 +1,16 @@
 # Historial de Cambios
 
+## [16.0.2.0] - 2025-07-31
+
+### ✨ Características
+* **Filtro de Subcategorías Dinámico:** Se implementa un sistema de filtrado por categorías y subcategorías robusto basado en la navegación por URL nativa de Odoo, mejorando la estabilidad y la experiencia de usuario.
+* **Filtro por Rango de Precios:** Se integra exitosamente el slider de precios nativo de Odoo, garantizando un rendimiento óptimo y una experiencia visual profesional.
+
+### 🐛 Correcciones y Mejoras
+* **Integración Visual:** Se han desarrollado estilos CSS a medida para que el slider de precios nativo se integre perfectamente con el diseño minimalista del módulo.
+* **Rendimiento del Backend:** Se ha optimizado el controlador para calcular los rangos de precios de forma eficiente, evitando la ralentización en catálogos con muchos productos.
+* **Estabilidad General:** Se refactorizó el código de JavaScript y del controlador para eliminar errores, mejorar la legibilidad y asegurar un comportamiento predecible de todos los filtros.
+
 ## [16.0.1.5] - 2025-07-31
 
 ### ✨ Características

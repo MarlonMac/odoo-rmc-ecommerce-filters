@@ -37,7 +37,7 @@
                                        t-call="website_sale.add_grid_or_list_option">
                                         <t t-set="_classes" t-valuef="d-flex ms-3"/>
                                     </t>
-                                    <button class="btn btn-light ms-3 position-relative" type="button" data-bs-toggle="collapse" data-bs-target="#rmcFilterCollapse" aria-expanded="false" aria-controls="rmcFilterCollapse" id="rmc_filter_toggle_btn">
+                                    <button class="btn btn-light ms-3 position-relative" type="button" data-bs-toggle="collapse" data-bs-target="#rmcFilterCollapse" aria-expanded="true" aria-controls="rmcFilterCollapse" id="rmc_filter_toggle_btn">
                                         <i class="fa fa-filter"/>
                                         <span class="d-none d-md-inline ms-1">Filtros</span>
                                         <t t-if="filters_active">
@@ -55,7 +55,7 @@
                             <div class="rmc_filters_container p-3">
                                 <div class="row w-100 align-items-end gx-3">
                                     
-                                    <div class="col-lg-3 mb-3 mb-lg-0">
+                                    <div class="col-lg-3 col-md-6 mb-3 mb-lg-0">
                                         <label for="category_filter" class="form-label small">Categoría</label>
                                         <select id="category_filter" name="category_selector" class="form-select form-select-sm btn btn-light text-start">
                                             <option value="">Todas</option>
@@ -69,19 +69,21 @@
                                         </select>
                                     </div>
 
-                                    <div class="col-lg-3 mb-3 mb-lg-0">
+                                    <div class="col-lg-3 col-md-6 mb-3 mb-lg-0">
                                         <label for="subcategory_filter" class="form-label small">Subcategoría</label>
                                         <select id="subcategory_filter" name="subcategory_selector" class="form-select form-select-sm btn btn-light text-start" disabled="disabled">
                                             <option value="">Todas</option>
                                         </select>
                                     </div>
                                     
-                                    <div class="col-lg-3 mb-3 mb-lg-0">
-                                        <label for="price_filter_placeholder" class="form-label small">Rango de Precio</label>
-                                        <input type="text" id="price_filter_placeholder" class="form-control form-control-sm btn btn-light" placeholder="Próximamente..." disabled="disabled"/>
+                                    <div class="col-lg-3 col-md-6 mb-3 mb-md-0">
+                                        <label class="form-label small">Rango de Precio</label>
+                                        <div class="rmc-native-price-slider">
+                                            <t t-call="website_sale.filter_products_price"/>
+                                        </div>
                                     </div>
 
-                                    <div class="col-lg-1 mb-3 mb-lg-0 d-flex flex-column justify-content-end">
+                                    <div class="col-lg-1 col-md-6 mb-3 mb-md-0 d-flex flex-column justify-content-end">
                                         <label for="on_sale_filter" class="form-label small">Ver Ofertas</label>
                                         <div class="rmc-codepen-switch">
                                             <input type="checkbox" name="on_sale" id="on_sale_filter" value="true" t-att-checked="is_on_sale_checked"/>
@@ -91,7 +93,7 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-2 col-md-12">
                                         <a href="/shop" class="btn btn-secondary w-100" role="button">Limpiar Filtros</a>
                                     </div>
 

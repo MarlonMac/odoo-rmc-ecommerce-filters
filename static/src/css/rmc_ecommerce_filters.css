@@ -6,23 +6,23 @@
 
 /* --- Contenedor Principal (Tarjeta) --- */
 .rmc-unified-search-card {
-    background-color: #ffffff; /* Fondo blanco */
-    border: 1px solid #e0e0e0; /* Borde gris muy sutil */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra más suave */
-    color: #212529; /* Color de texto oscuro (negro estándar de Bootstrap) */
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    color: #212529;
     
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-left-radius: 0.7rem;
     border-bottom-right-radius: 0.7rem;
-    padding: 13px 10px; /* Espaciado interno */
+    padding: 13px 10px;
 }
 
 /* --- Separador Horizontal --- */
 .rmc-unified-search-card hr {
     background-color: #aeaeae;
-    margin-top: 13px; /* Espacio superior para el separador */
-    margin-bottom: 0; /* Espacio inferior para el separador */
+    margin-top: 13px;
+    margin-bottom: 0;
 }
 
 .rmc-unified-search-card .btn {
@@ -33,45 +33,30 @@
     border-radius: 0.75rem;
 }
 
-/* --- Inputs y Selects Oscuros --- 
-.rmc-unified-search-card .form-control,
-.rmc-unified-search-card .form-select {
-    background-color: #f8f9fa; /* Un gris muy claro para los inputs 
-    color: #212529;
-    border-color: #dee2e6;
-} */
-
 .rmc-unified-search-card .form-control::placeholder {
-    color: #6c757d; /* Color del placeholder */
+    color: #6c757d;
 }
 
 /* --- Botón de Búsqueda --- */
 .rmc-unified-search-card .oe_search_button {
-    background-color: #aa1f23; /* Botón rojo */
+    background-color: #aa1f23;
     border-color: #aa1f2459;
 }
 
 /* --- Botón de Limpiar --- */  
 .rmc-unified-search-card a.btn.btn-secondary  {
-    background-color: #fff; /* Fondo blanco para el botón de limpiar */
-    border: 1px solid #212529; /* Borde oscuro */
-    color: #181818; /* Texto oscuro */
+    background-color: #fff;
+    border: 1px solid #212529;
+    color: #181818;
 }
 
-/* --- Botón de Limpiar Hover --- */
 .rmc-unified-search-card a.btn.btn-secondary:hover {
-    background-color: #212529; /* Fondo oscuro en hover */
-    border-color: #212529; /* Borde oscuro en hover */
-    color: #fff; /* Texto blanco en hover */
-}
-
-/* --- Switch de "Ofertas" --- */
-.rmc-unified-search-card .form-check-input:checked {
-    background-color: #212529; /* Switch activado en color oscuro */
+    background-color: #212529;
     border-color: #212529;
+    color: #fff;
 }
 
-/* --- Ajuste para eliminar el espacio superior (del paso anterior) --- */
+/* --- Ajuste para eliminar el espacio superior --- */
 .o_wsale_products_page > .container.oe_website_sale {
     margin-top: -16px;
     padding-top: 0;
@@ -83,79 +68,61 @@
 =====================================
 */
 
-/* Transición suave para el despliegue */
 #rmcFilterCollapse.collapsing {
     transition: height 0.3s ease;
 }
 
-/* separamos el estilo para que esté redondeado */
 #rmc_filter_toggle_btn {
     border-radius: 0.75rem;
-}
-
-/* Estilo para el botón de filtros cuando NO está activo */
-#rmc_filter_toggle_btn {
     border: 1px solid #212529;
-    background-color: #f8f9fa; /* Añadimos un tono claro para que contraste con los demás botones */
-    color: #212529; /* Texto oscuro para el botón inactivo */
+    background-color: #f8f9fa;
+    color: #212529;
 }
 
-/* Estilo para el botón de filtros cuando está activo */
 #rmc_filter_toggle_btn.active {
-    /* Se añade un borde más grueso y oscuro para coincidir con el estilo nativo. */
     border: 1px solid #212529;
-    /* Se ajusta el fondo para que siga siendo claro. */
-    background-color: #212529; /* Fondo oscuro para el botón activo */
-    color: #fff; /* Texto claro para el botón activo */
+    background-color: #212529;
+    color: #fff;
 }
 
-/*
-==========================================================
- Quitar el anillo de enfoque del botón de filtros
-==========================================================
-*/
 #rmc_filter_toggle_btn:focus {
     box-shadow: none;
 }
 
 /*
 ==========================================================
- Interruptor de "Ofertas" Personalizado (Inspirado en Codepen codepen.io/raubaca/pen/BjGKde)
+ Interruptor de "Ofertas" Personalizado
 ==========================================================
 */
 .rmc-codepen-switch {
-    /* Contenedor para alinear el interruptor */
-    height: 38px; /* Misma altura que los otros inputs */
+    height: 38px;
     display: flex;
     align-items: center;
 }
 
-/* Ocultamos el checkbox real */
 .rmc-codepen-switch input[type="checkbox"] {
     position: absolute;
     opacity: 0;
     z-index: -1;
 }
 
-/* El riel o fondo del interruptor */
 .rmc-codepen-switch .check-trail {
     display: flex;
     align-items: center;
-    width: 60px;   /* Ancho del riel */
-    height: 32px;  /* Alto del riel */
+    width: 60px;
+    height: 32px;
     padding: 4px;
-    background: #e9ecef; /* Color del riel apagado */
+    background: #e9ecef;
     border-radius: 32px;
     transition: all 0.4s ease;
     cursor: pointer;
 }
 
-/* El círculo manejador */
 .rmc-codepen-switch .check-handler {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 24px;   /* Diámetro del círculo */
+    width: 24px;
     height: 24px;
     position: relative;
     background: white;
@@ -164,14 +131,13 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* Los palitos que forman la 'X' para el estado apagado */
 .rmc-codepen-switch .check-handler::before,
 .rmc-codepen-switch .check-handler::after {
     content: "";
     position: absolute;
     width: 2px;
     height: 12px;
-    background: #adb5bd; /* Color de la 'X' */
+    background: #adb5bd;
     transition: all 0.4s ease;
 }
 
@@ -182,36 +148,118 @@
     transform: rotate(-45deg);
 }
 
-
-/* --- ESTADOS ACTIVADOS --- */
-
 .rmc-codepen-switch input[type="checkbox"]:checked + .check-trail {
-    background: #212529; /* Color del riel encendido (oscuro) */
+    background: #212529;
 }
 
 .rmc-codepen-switch input[type="checkbox"]:checked + .check-trail .check-handler {
-    transform: translateX(28px); /* Movemos el círculo a la derecha */
+    transform: translateX(28px);
     background: white;
 }
 
-/* Los palitos se convierten en un 'check' ✓ */
 .rmc-codepen-switch input[type="checkbox"]:checked + .check-trail .check-handler::before {
     width: 2px;
     height: 12px;
     transform: rotate(45deg) translate(3px, -2px);
-    background: #212529; /* Color del 'check' */
+    background: #212529;
 }
 
 .rmc-codepen-switch input[type="checkbox"]:checked + .check-trail .check-handler::after {
     width: 2px;
     height: 6px;
     transform: rotate(-45deg) translate(-3px, -1px);
-    background: #212529; /* Color del 'check' */
+    background: #212529;
 }
 
 /*
 ==========================================================
- Corrección Final para el Slider de Rango de Precios
+ CORRECCIONES VISUALES para el Slider Nativo de Precios
 ==========================================================
 */
 
+/* Contenedor principal del slider: ahora estilizado como una caja */
+.rmc-native-price-slider {
+    /* Estilos para la caja contenedora */
+    background-color: #d8d8d8;   /* Color de fondo igual a otros filtros */
+    border: 1px solid #d8d8d8;   /* Borde estándar para inputs */
+    border-radius: 0.75rem;       /* Mismo radio que otros botones y selectores */
+    padding: 0 1rem;             /* Espaciado horizontal interno */
+    height: 35px;                 /* Misma altura que otros filtros */
+    box-sizing: border-box;       /* El padding no aumenta el tamaño total */
+
+    /* Alineación del contenido del slider */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;      /* Centra el slider verticalmente */
+    align-items: stretch;         /* Estira la barra del slider para que ocupe el ancho */
+}
+
+
+/* Ocultar elementos innecesarios del template nativo */
+.rmc-native-price-slider .o_wsale_products_attributes_title,
+.rmc-native-price-slider h6,
+.rmc-native-price-slider .h6 {
+    display: none !important;
+}
+
+/* Eliminar espaciados extra del widget de Odoo */
+.rmc-native-price-slider .o_wsale_price_range_filter {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Estilos para los thumbs (controles redondos) */
+.rmc-native-price-slider .multirange > input[type=range]::-webkit-slider-thumb {
+    background-color: #212529;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.rmc-native-price-slider .multirange > input[type=range]::-moz-range-thumb {
+    background-color: #212529;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para la barra de progreso */
+.rmc-native-price-slider .multirange > div.thumb::before {
+    background: #212529;
+}
+
+/* Estilos para los valores de texto (min/max) */
+.rmc-native-price-slider .filter-range-info {
+    font-size: 0.8em;
+    color: #6c757d;
+    margin-top: 2px; /* Pequeño ajuste para centrarlo mejor */
+    text-align: center;
+}
+
+/* Anular el margen inferior 'mb-5' que rompe la alineación */
+.rmc-native-price-slider .multirange-wrapper {
+    margin-bottom: 0 !important;
+}
+
+/* Eliminar el margen superior de los labels de precio */
+.rmc-native-price-slider .multirange-min,
+.rmc-native-price-slider .multirange-max {
+    margin-top: 0 !important;
+}
+
+/* Asegurar que los inputs invisibles no ocupen espacio vertical */
+.rmc-native-price-slider input.multirange-min,
+.rmc-native-price-slider input.multirange-max {
+    margin-bottom: 0 !important;
+    height: 0;
+    border: none;
+}
+
+/* Estilos para los valores de texto (min/max), posicionados de forma absoluta */
+.rmc-native-price-slider .multirange-wrapper > small {
+    position: absolute;
+    top: 22px; /* Lo empuja justo debajo de la caja del slider*/
+    left: 0;
+    right: 0;
+    margin-top: 5px; /* Pequeño espacio entre la caja y el texto */
+    font-size: 0.8em;
+    color: #6c757d;
+    text-align: center;
+}
