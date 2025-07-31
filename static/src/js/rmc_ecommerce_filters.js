@@ -4,49 +4,86 @@ odoo.define('rmc_ecommerce_filters.filters', function (require) {
 var publicWidget = require('web.public.widget');
 
 publicWidget.registry.RmcEcommerceFilters = publicWidget.Widget.extend({
-    // Ahora el selector principal es toda la tarjeta para controlar ambos contenedores
     selector: '.rmc-unified-search-card', 
     events: {
-        'change .rmc_filters_container #category_filter': '_onFilterChange',
-        'change .rmc_filters_container #on_sale_filter': '_onFilterChange',
+        'change #category_filter': '_onCategoryChange',
+        'change #subcategory_filter': '_onSubcategoryChange',
+        'change #on_sale_filter': '_onSaleFilterChange',
     },
 
-    /**
-     * @override
-     */
     start: function () {
-        const filterCollapseEl = this.el.querySelector('#rmcFilterCollapse');
-        const filterToggleButton = this.el.querySelector('#rmc_filter_toggle_btn');
-
-        if (!filterCollapseEl || !filterToggleButton) {
-            return this._super.apply(this, arguments);
+        // Al cargar la página, si estamos en una subcategoría, poblamos los dropdowns.
+        const parentCategoryId = this.$el.closest('form').data('selected-parent-id');
+        if (parentCategoryId) {
+            this._updateSubcategories(parentCategoryId);
         }
-
-        // --- Lógica para el botón de filtros ---
-        // Cambia el estilo del botón cuando el panel se muestra o se oculta
-        const toggleButtonClass = () => {
-            if (filterCollapseEl.classList.contains('show')) {
-                filterToggleButton.classList.add('active');
-            } else {
-                filterToggleButton.classList.remove('active');
-            }
-        };
-
-        // Escuchar eventos de Bootstrap para actualizar el botón
-        filterCollapseEl.addEventListener('shown.bs.collapse', toggleButtonClass);
-        filterCollapseEl.addEventListener('hidden.bs.collapse', toggleButtonClass);
-        
-        // Estado inicial
-        toggleButtonClass();
-
         return this._super.apply(this, arguments);
     },
 
-    /**
-     * Al cambiar cualquier filtro, se envía el formulario completo.
-     */
-    _onFilterChange: function (ev) {
+    // 1. Al cambiar la categoría padre...
+    _onCategoryChange: function (ev) {
+        const $target = $(ev.currentTarget);
+        const categoryId = $target.val();
+        
+        if (categoryId) {
+            // Buscamos las subcategorías. Si no tiene, redirigimos directamente.
+            this._rpc({
+                route: '/shop/subcategories',
+                params: { category_id: categoryId },
+            }).then(subcategories => {
+                if (subcategories && subcategories.length > 0) {
+                    this._updateSubcategories(categoryId);
+                } else {
+                    const categorySlug = $target.find('option:selected').data('slug');
+                    window.location.href = '/shop/category/' + categorySlug;
+                }
+            });
+        } else {
+            // Si se selecciona "Todas", vamos a la tienda principal.
+            window.location.href = '/shop';
+        }
+    },
+
+    // 2. Al cambiar la subcategoría, redirigimos a su URL.
+    _onSubcategoryChange: function(ev) {
+        const $target = $(ev.currentTarget);
+        const subcategorySlug = $target.find('option:selected').data('slug');
+        if (subcategorySlug) {
+            window.location.href = '/shop/category/' + subcategorySlug;
+        }
+    },
+
+    // 3. El filtro de ofertas sí necesita enviar el formulario.
+    _onSaleFilterChange: function(ev) {
         this.el.closest('form').submit();
+    },
+
+    // Función para poblar el dropdown de subcategorías.
+    _updateSubcategories: function (categoryId) {
+        const $subCategorySelect = this.$('#subcategory_filter');
+        const selectedSubId = this.$el.closest('form').data('selected-subcategory-id');
+
+        this._rpc({
+            route: '/shop/subcategories',
+            params: { category_id: categoryId },
+        }).then(function (subcategories) {
+            $subCategorySelect.find('option:not(:first)').remove();
+
+            if (subcategories && subcategories.length > 0) {
+                $subCategorySelect.prop('disabled', false);
+                subcategories.forEach(function (sub) {
+                    // Añadimos el 'data-slug' a cada opción.
+                    const option = new Option(sub.name, sub.id);
+                    $(option).data('slug', sub.slug);
+                    if (sub.id === selectedSubId) {
+                        $(option).prop('selected', true);
+                    }
+                    $subCategorySelect.append(option);
+                });
+            } else {
+                $subCategorySelect.prop('disabled', true);
+            }
+        });
     },
 });
 

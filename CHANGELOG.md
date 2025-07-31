@@ -1,5 +1,14 @@
 # Historial de Cambios
 
+## [16.0.1.5] - 2025-07-31
+
+### ✨ Características
+* **Filtro de Subcategorías Funcional:** El filtro de subcategorías ahora funciona de forma nativa, redirigiendo a la URL de la subcategoría seleccionada para un filtrado preciso y estable.
+
+### 🐛 Correcciones y Mejoras
+* **Estabilidad del Controlador:** Se ha refactorizado por completo el controlador principal para eliminar los errores "Internal Server Error" y seguir las mejores prácticas de Odoo.
+* **Lógica de Filtros Activos:** Se ha corregido el indicador visual "Filtros" para que se active correctamente cuando se selecciona una categoría o se aplica un filtro de ofertas.
+
 ## [16.0.1.0.3] - 2025-07-06
 
 ### ✨ Características

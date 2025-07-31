@@ -8,7 +8,7 @@ Este módulo añade un bloque de filtros avanzado, personalizable y minimalista 
 
 El módulo reemplaza la cabecera de búsqueda estándar de la tienda por una "tarjeta" de filtros unificada que se integra visualmente debajo de la barra de navegación principal. Esta tarjeta contiene no solo la barra de búsqueda, sino también los controles de ordenamiento, las opciones de vista (cuadrícula/lista) y un panel de filtros personalizables que se puede mostrar u ocultar con una animación suave.
 
-La funcionalidad está diseñada para ser compatible con entornos multi-sitio web y permite filtrar productos por categoría, subcategoría (placeholder), rango de precios (placeholder) y un filtro especial de "Ofertas".
+La funcionalidad está diseñada para ser compatible con entornos multi-sitio web y permite filtrar productos por categoría, subcategoría (totalmente funcional), rango de precios (placeholder) y un filtro especial de "Ofertas".
 
 ## Características Principales
 

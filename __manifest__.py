@@ -17,7 +17,7 @@
     'author': "Marlon Macario para Red Music Corporation",
     'website': "https://www.link-gt.com",
     'category': 'Website/eCommerce',
-    'version': '16.0.1.0.3',
+    'version': '16.0.1.5', # <-- VERSIÓN ACTUALIZADA
     'license': 'LGPL-3',
     'depends': [
         'product',
